@@ -1,15 +1,19 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import Evaluation from './Evaluation';
 import FullPDF from './FullPDF';
 
 import Confetti from 'react-confetti';
+import { useRouter } from 'next/navigation';
 
-function Result({ data }) {
-  const [show, setShow] = useState(true);
-  useEffect(() => {
-    const id = setTimeout(() => setShow(false), 6000);
-    return () => clearTimeout(id);
-  }, []);
+function Result({ id }) {
+  const router = useRouter();
+  let data = JSON.parse(window?.localStorage.getItem('workspace'));
+  data = data?.find((course) => course.id == id);
+  if (!data) {
+    router.push('/');
+    return;
+  }
   return (
     <div className="pt-[100px] grid grid-cols-12 gap-3">
       <Confetti
