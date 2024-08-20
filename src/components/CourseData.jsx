@@ -8,9 +8,7 @@ import {
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { fileStore, titleStore } from '@/store/file';
-
 import { fileProcessing } from '@/lib/helper';
-
 import { useRouter } from 'next/navigation';
 import EvaluateButton from './EvaluateButton';
 import { courses, subjects } from '@/lib/data';
@@ -25,6 +23,7 @@ function CourseData() {
     setLoading(true);
     const id = await fileProcessing(file, courseType, title, subject);
     setLoading(false);
+    console.log(id, 'redirecing');
     router.push('/' + id);
     setFile(null);
     setData('title', '');

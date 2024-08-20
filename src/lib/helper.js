@@ -2,9 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { PDFDocument } from 'pdf-lib';
 
 export const fileProcessing = async (file, courseType, title, subject) => {
-  'use client';
   const reader = new FileReader();
-
   const result = await new Promise((resolve, reject) => {
     reader.onloadend = () => resolve(reader.result);
     reader.onerror = reject;
@@ -36,7 +34,6 @@ export const getPageCount = async (file) => {
   try {
     const data = await new Promise((resolve, reject) => {
       const reader = new FileReader();
-
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
 

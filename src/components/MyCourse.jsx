@@ -3,17 +3,15 @@ import React, { useState, useEffect } from 'react';
 import Preview from './Preview';
 
 function MyCourse({ filter }) {
-  console.log(filter);
   const [showall, setShowAll] = useState(false);
   const [myCourse, setMyCourse] = useState([]);
   useEffect(() => {
     let data = JSON.parse(window.localStorage.getItem('workspace')) || [];
-    console.log(data);
     if (filter && filter != 'All') {
       data = data.filter((cur) => cur.courseType === filter);
     }
     setMyCourse(data);
-  });
+  }, []);
 
   return (
     <div className="col-span-12">
