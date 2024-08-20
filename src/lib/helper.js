@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { PDFDocument } from 'pdf-lib';
 
 export const fileProcessing = async (file, courseType, title, subject) => {
+  'use client';
   const reader = new FileReader();
 
   const result = await new Promise((resolve, reject) => {
